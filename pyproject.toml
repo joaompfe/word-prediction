@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "word-prediction"
+version = "0.1.0"
+description = ""
+authors = ["joaompfe <joaofe2000@gmail.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.8"
+jupyter = "^1.0.0"
+#spacy = "^3.0.6"
+spacy = { git = "git@github.com:joaompfe/spaCy.git", branch = "master" }
+nltk = "^3.6.2"
+
+[tool.poetry.dev-dependencies]
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
