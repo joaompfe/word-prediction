@@ -25,3 +25,5 @@ poetry run python "$SCRIPTS_DIR/split_train_test_dev.py" "$sl_file" "$2"
 poetry run python "$SCRIPTS_DIR/sl2spacy.py" "$2/train.sl" "$2"
 poetry run python "$SCRIPTS_DIR/sl2spacy.py" "$2/test.sl" "$2"
 poetry run python "$SCRIPTS_DIR/sl2spacy.py" "$2/dev.sl" "$2"
+
+

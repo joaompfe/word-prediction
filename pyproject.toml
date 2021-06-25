@@ -1,8 +1,8 @@
 [tool.poetry]
 name = "word-prediction"
 version = "0.1.0"
-description = ""
-authors = ["joaompfe <joaofe2000@gmail.com>"]
+description = "Next word prediction system, developed on top of spaCy library."
+authors = ["João Fé <joaofe2000@gmail.com>"]
 
 [tool.poetry.dependencies]
 python = "^3.8"
@@ -10,8 +10,14 @@ jupyter = "^1.0.0"
 #spacy = "^3.0.6"
 spacy = { git = "git@github.com:joaompfe/spaCy.git", branch = "master" }
 nltk = "^3.6.2"
+gdown = "^3.13.0"
 
 [tool.poetry.dev-dependencies]
+pytest = "^6.2.4"
+
+[tool.poetry.scripts]
+download-data = "scripts:download_data"
+download-models = "scripts:download_models"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]

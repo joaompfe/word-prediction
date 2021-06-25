@@ -27,7 +27,7 @@ if __name__ == '__main__':
 
     print(out_path)
 
-    with open(in_path, encoding="ISO-8859-1") as f:
+    with open(in_path) as f:
         for line in tqdm(f, desc="Converting 'sentence per line' format to spacy binary format", total=n_lines):
             doc = nlp(line.rstrip())
             doc_bin.add(doc)
