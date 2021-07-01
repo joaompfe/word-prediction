@@ -7,8 +7,7 @@ authors = ["João Fé <joaofe2000@gmail.com>"]
 [tool.poetry.dependencies]
 python = "^3.8"
 jupyter = "^1.0.0"
-#spacy = "^3.0.6"
-spacy = { git = "git@github.com:joaompfe/spaCy.git", branch = "master" }
+spacy = "^3.0.6"
 nltk = "^3.6.2"
 gdown = "^3.13.0"
 
