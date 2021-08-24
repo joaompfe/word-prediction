@@ -1,1 +1,1 @@
-from .ngram import NgramWordPredictor, BigramWordPredictor, TrigramWordPredictor, count_ngrams
+from .ngram import NgramWordPredictor, BigramWordPredictor, TrigramWordPredictor

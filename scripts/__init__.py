@@ -10,9 +10,9 @@ def download_data():
     gdown.download(file_urls_url, "file_urls.json", quiet=False)
 
     f = open("file_urls.json")
-    urls = json.load(f)
+    jsonf = json.load(f)
 
-    data_url = urls["data"]
+    data_url = jsonf["data"]["url"]
     gdown.download(data_url, "data.tar.gz", quiet=False)
 
     run(["tar", "-xvzf", "data.tar.gz"])
@@ -28,7 +28,7 @@ def download_models():
     f = open("file_urls.json")
     urls = json.load(f)
 
-    url = urls["models"]
+    url = urls["models"]["url"]
     gdown.download(url, "models.tar.gz", quiet=False)
 
     run(["tar", "-xvzf", "models.tar.gz"])
