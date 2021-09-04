@@ -1,37 +1,52 @@
-## Welcome to GitHub Pages
+## Docs
 
-You can use the [editor on GitHub](https://github.com/joaompfe/word-prediction/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
+### Requirements
+- Linux platform
+- [Poetry](https://python-poetry.org/)
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+### Installation 
+Download the project from the repository:\
+`git clone https://github.com/joaompfe/word-prediction`\
+`cd word-prediction`
 
-### Markdown
+Install the project:\
+`poetry install`
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+If you want to download the corpus data (approx. 4GB):\
+`poetry run download-data`
 
-```markdown
-Syntax highlighted code block
+If you want to download some pre-built portuguese language models (approx. 1GB):\
+`poetry run download-models`
 
-# Header 1
-## Header 2
-### Header 3
+### Usage
+Start a python shell using the poetry virtual env:\
+`poetry run python`
 
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
+Create some text-processing pipeline, e.g.:
+```python
+from spacy.lang.pt import Portuguese
+nlp = Portuguese()
 ```
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
+Create a predictor pipeline component and add it to the pipe:
+```python
+from word_prediction.nwp import TrigramLmWordPredictor
+from word_prediction.trie import Trie
 
-### Jekyll Themes
+@Portuguese.factory("next_word_predictor")
+def create_next_word_predictor(nlp, name):
+    order = 3
+    t = Trie(order, "models/train-mkn-trie")  # this model will only be available if you download the pre-built models
+    nwp_pipe_component = TrigramLmWordPredictor(t)
+    return nwp_pipe_component
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/joaompfe/word-prediction/settings/pages). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
+nlp.add_pipe("next_word_predictor")
+```
 
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
+Process some sentences and see the next word predictions:
+```python
+sentences = ["seria útil", "amanhã e", "além de", "com muita"]
+for s in sentences:
+    doc = nlp(s)
+    print("'%s' next word prediction is: '%s'" % (s, doc._.nwp))
+```
