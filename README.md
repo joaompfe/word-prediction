@@ -1,4 +1,4 @@
-# Word Prediction
+# Word Prediction SpaCy component
 
 ## Requirements
 - Linux platform
