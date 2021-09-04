@@ -1,7 +1,8 @@
 # Word Prediction
 
 ## Requirements
-This project uses [poetry](https://python-poetry.org/) for packaging and dependency management.
+- Linux platform
+- [poetry](https://python-poetry.org/) for packaging and dependency management.
 
 ## Installation
 On project root:
