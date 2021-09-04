@@ -1,7 +1,7 @@
 import pytest
 from spacy.lang.pt import Portuguese
 
-from word_prediction.ngram import NgramComponent, BigramWordPredictor, TrigramWordPredictor
+from word_prediction.nwp import NgramComponent, BigramLmWordPredictor, TrigramLmWordPredictor
 from word_prediction.trie import Trie
 
 
@@ -25,10 +25,11 @@ def test_bigram(bigram_pipe, sentences):
 
 @Portuguese.factory("next_word_predictor")
 def create_next_word_predictor(nlp, name):
+    t = Trie(3, "models/test/trigram/train.trie")
     if name == "bigram":
-        return BigramWordPredictor(Trie("models/test/trigram/train.trie"))
+        return BigramLmWordPredictor(t)
     elif name == "trigram":
-        return TrigramWordPredictor(Trie("models/test/trigram/train.trie"))
+        return TrigramLmWordPredictor(t)
 
 
 def test_next_word_predictor(nlp, sentences):

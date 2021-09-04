@@ -1,16 +1,17 @@
 [tool.poetry]
 name = "word-prediction"
 version = "0.1.0"
-description = "Next word prediction system, developed on top of spaCy library."
+description = "Next word prediction component for SpaCy, developed on top of ngram-lm."
 authors = ["João Fé <joaofe2000@gmail.com>"]
 
 [tool.poetry.dependencies]
 python = "^3.8"
+ngram-lm = "latest"
 spacy = "^3.0.6"
 gdown = "^3.13.0"
 nltk = "^3.6.2"
 jupyter = "^1.0.0"
-ngram-lm = "^0.0.2"
+tqdm = "^4.62.2"
 
 [tool.poetry.dev-dependencies]
 pytest = "^6.2.4"

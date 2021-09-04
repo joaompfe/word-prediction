@@ -1,1 +1,1 @@
-from .ngram import NgramWordPredictor, BigramWordPredictor, TrigramWordPredictor
+from .nwp import NgramLmWordPredictor, BigramLmWordPredictor, TrigramLmWordPredictor
