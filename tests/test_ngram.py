@@ -25,7 +25,7 @@ def test_bigram(bigram_pipe, sentences):
 
 @Portuguese.factory("next_word_predictor")
 def create_next_word_predictor(nlp, name):
-    t = Trie(3, "models/test/trigram/train.trie")
+    t = Trie(3, "models/train-mkn-trie")
     if name == "bigram":
         return BigramLmWordPredictor(t)
     elif name == "trigram":
