@@ -22,7 +22,7 @@ If you want to download some pre-built portuguese language models (approx. 1GB):
 Start a python shell using the poetry virtual env:\
 `poetry run python`
 
-Create some text-processing pipeline, e.g.:
+Create a text-processing pipeline, e.g.:
 ```python
 from spacy.lang.pt import Portuguese
 nlp = Portuguese()
